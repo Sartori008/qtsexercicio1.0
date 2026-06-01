@@ -12,4 +12,15 @@ const maiorValor = (a, b) => {
   return "Os valores são iguais";
 };
 
-module.exports = { somar, mensagemBoasVindas, maiorValor };
+const parOuImpar = (a, b) => {
+  const checar = (n) => `${n} é ${n % 2 === 0 ? "par" : "ímpar"}`;
+  return `${checar(a)} | ${checar(b)}`;
+};
+
+const podeVotar = (idade) => {
+  if (idade < 16) return "Não pode votar";
+  if (idade < 18 || idade >= 70) return "Voto opcional";
+  return "Voto obrigatório";
+};
+
+module.exports = { somar, mensagemBoasVindas, maiorValor, parOuImpar, podeVotar };
