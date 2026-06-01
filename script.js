@@ -21,6 +21,6 @@ const podeVotar = (idade) => {
   if (idade < 16) return "Não pode votar";
   if (idade < 18 || idade >= 70) return "Voto opcional";
   return "Voto obrigatório";
-};
+}; //teste
 
 module.exports = { somar, mensagemBoasVindas, maiorValor, parOuImpar, podeVotar };

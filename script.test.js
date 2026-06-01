@@ -18,7 +18,7 @@ describe("parOuImpar", () => {
   test("par e ímpar", () => expect(parOuImpar(4, 3)).toBe("4 é par | 3 é ímpar"));
   test("dois pares", () => expect(parOuImpar(2, 8)).toBe("2 é par | 8 é par"));
   test("dois ímpares", () => expect(parOuImpar(1, 5)).toBe("1 é ímpar | 5 é ímpar"));
-});
+}); //teste
 
 describe("podeVotar", () => {
   test("menor de 16", () => expect(podeVotar(15)).toBe("Não pode votar"));
