@@ -4,7 +4,12 @@ const { somar,
     parOuImpar, 
     podeVotar, 
     classificarNumero,
-    calcularBonus } = require('./script');
+    calcularBonus, 
+    podeDirigir,
+    semestreDoMes, 
+    vogalOuConsoante, 
+    mediaArray,
+    login, } = require('./script');
 
 test('soma dois números', () => {
   expect(somar(2, 3)).toBe(5);
@@ -46,4 +51,37 @@ describe("calcularBonus", () => {
   test("acima de 5000", () => expect(calcularBonus(6000)).toBe("Bônus de 5%: R$ 300.00"));
   test("exatamente 2000", () => expect(calcularBonus(2000)).toBe("Bônus de 10%: R$ 200.00"));
   test("exatamente 5000", () => expect(calcularBonus(5000)).toBe("Bônus de 10%: R$ 500.00"));
+});
+
+describe("podeDirigir", () => {
+  test("18 anos", () => expect(podeDirigir(18)).toBe("Pode dirigir"));
+  test("17 anos", () => expect(podeDirigir(17)).toBe("Não pode dirigir"));
+  test("30 anos", () => expect(podeDirigir(30)).toBe("Pode dirigir"));
+});
+
+describe("semestreDoMes", () => {
+  test("janeiro", () => expect(semestreDoMes("janeiro")).toBe("janeiro pertence ao primeiro semestre"));
+  test("julho", () => expect(semestreDoMes("julho")).toBe("julho pertence ao segundo semestre"));
+  test("dezembro", () => expect(semestreDoMes("dezembro")).toBe("dezembro pertence ao segundo semestre"));
+  test("inválido", () => expect(semestreDoMes("quatembro")).toBe("Mês inválido"));
+});
+
+
+describe("vogalOuConsoante", () => {
+  test("vogal", () => expect(vogalOuConsoante("a")).toBe('"a" é uma vogal'));
+  test("consoante", () => expect(vogalOuConsoante("b")).toBe('"b" é uma consoante'));
+  test("inválido", () => expect(vogalOuConsoante("ab")).toBe("Entrada inválida"));
+});
+
+describe("mediaArray", () => {
+  test("média correta", () => expect(mediaArray([10, 20, 30, 40, 50])).toBe("A média dos valores é: 30.00"));
+  test("menos de 5 elementos", () => expect(mediaArray([1, 2, 3])).toBe("Informe um array com exatamente 5 valores"));
+  test("não é array", () => expect(mediaArray("texto")).toBe("Informe um array com exatamente 5 valores"));
+});
+
+describe("login", () => {
+  test("correto", () => expect(login("Admin", "123")).toBe("Conectado com sucesso!"));
+  test("senha errada", () => expect(login("Admin", "456")).toBe("Acesso negado! Usuário ou senha incorretos!"));
+  test("usuário errado", () => expect(login("admin", "123")).toBe("Acesso negado! Usuário ou senha incorretos!"));
+  test("ambos errados", () => expect(login("user", "000")).toBe("Acesso negado! Usuário ou senha incorretos!"));
 });

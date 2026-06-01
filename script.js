@@ -35,10 +35,45 @@ const calcularBonus = (salario) => {
   return `Bônus de 5%: R$ ${(salario * 0.05).toFixed(2)}`;
 };
 
+const podeDirigir = (idade) => idade >= 18 ? "Pode dirigir" : "Não pode dirigir"; 
+
+const semestreDoMes = (mes) => {
+  const primeiro = ["janeiro", "fevereiro", "março", "abril", "maio", "junho"];
+  const segundo = ["julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
+  const m = mes.trim().toLowerCase();
+  if (primeiro.includes(m)) return `${mes} pertence ao primeiro semestre`;
+  if (segundo.includes(m)) return `${mes} pertence ao segundo semestre`;
+  return "Mês inválido";
+};
+
+const vogalOuConsoante = (letra) => {
+  const l = letra.trim().toLowerCase();
+  if (l.length !== 1 || !/[a-záéíóúãõâêô]/.test(l)) return "Entrada inválida";
+  const vogais = ["a", "e", "i", "o", "u", "á", "é", "í", "ó", "ú", "ã", "õ", "â", "ê", "ô"];
+  return `"${letra}" é uma ${vogais.includes(l) ? "vogal" : "consoante"}`;
+};
+
+const mediaArray = (valores) => {
+  if (!Array.isArray(valores) || valores.length !== 5)
+    return "Informe um array com exatamente 5 valores";
+  const media = valores.reduce((acc, v) => acc + v, 0) / 5;
+  return `A média dos valores é: ${media.toFixed(2)}`;
+};
+
+const login = (usuario, senha) =>
+  usuario === "Admin" && senha === "123"
+    ? "Conectado com sucesso!"
+    : "Acesso negado! Usuário ou senha incorretos!";
+
 module.exports = { somar, 
     mensagemBoasVindas, 
     maiorValor, 
     parOuImpar, 
     podeVotar, 
     classificarNumero,
-    calcularBonus };
+    calcularBonus,
+    podeDirigir,
+    semestreDoMes,
+    vogalOuConsoante, 
+    mediaArray,
+    login, };
