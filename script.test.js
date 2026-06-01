@@ -1,4 +1,10 @@
-const { somar, mensagemBoasVindas, maiorValor, parOuImpar, podeVotar } = require('./script');
+const { somar, 
+    mensagemBoasVindas, 
+    maiorValor, 
+    parOuImpar, 
+    podeVotar, 
+    classificarNumero,
+    calcularBonus } = require('./script');
 
 test('soma dois números', () => {
   expect(somar(2, 3)).toBe(5);
@@ -26,4 +32,18 @@ describe("podeVotar", () => {
   test("17 anos", () => expect(podeVotar(17)).toBe("Voto opcional"));
   test("30 anos", () => expect(podeVotar(30)).toBe("Voto obrigatório"));
   test("70 anos", () => expect(podeVotar(70)).toBe("Voto opcional"));
+});
+
+describe("classificarNumero", () => {
+  test("positivo", () => expect(classificarNumero(10)).toBe("10 é positivo"));
+  test("negativo", () => expect(classificarNumero(-5)).toBe("-5 é negativo"));
+  test("zero", () => expect(classificarNumero(0)).toBe("O valor é igual a zero"));
+});
+
+describe("calcularBonus", () => {
+  test("abaixo de 2000", () => expect(calcularBonus(1000)).toBe("Bônus de 20%: R$ 200.00"));
+  test("entre 2000 e 5000", () => expect(calcularBonus(3000)).toBe("Bônus de 10%: R$ 300.00"));
+  test("acima de 5000", () => expect(calcularBonus(6000)).toBe("Bônus de 5%: R$ 300.00"));
+  test("exatamente 2000", () => expect(calcularBonus(2000)).toBe("Bônus de 10%: R$ 200.00"));
+  test("exatamente 5000", () => expect(calcularBonus(5000)).toBe("Bônus de 10%: R$ 500.00"));
 });
